@@ -8,6 +8,7 @@
     "deploy:app": "pnpm --filter todo deploy-app",
     "dev:app": "pnpm --filter todo dev"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",

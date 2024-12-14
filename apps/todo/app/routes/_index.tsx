@@ -4,7 +4,7 @@ import { CommandMenuTodo } from "~/components/command-todo";
 import { SonnerToast } from "~/components/toast";
 import { TodoRow } from "~/components/todo-row";
 import { useCreateTodoStore } from "~/tiny-store/useCreateStore";
-import { cn } from "../lib/utils";
+import { cn } from "~/lib/utils";
 import { Loader2 } from "lucide-react";
 import { useEffect } from "react";
 
