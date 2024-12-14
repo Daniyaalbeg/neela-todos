@@ -6,27 +6,23 @@ import {
 } from "tinybase/persisters/persister-browser";
 import { createStore, TablesSchema, ValuesSchema } from "tinybase/with-schemas";
 
-const id1 = crypto.randomUUID();
-const id2 = crypto.randomUUID();
-const id3 = crypto.randomUUID();
-
 export const INITIAL_TODOS = {
-  [id1]: {
-    id: id1,
+  ["1"]: {
+    id: "1",
     text: "Start typing to create a new todo",
     completed: false,
     createdAt: Date.now(),
     type: "Now",
   },
-  [id2]: {
-    id: id2,
+  ["2"]: {
+    id: "2",
     text: "Click a todo to mark it complete",
     completed: false,
     createdAt: Date.now(),
     type: "Now",
   },
-  [id3]: {
-    id: id3,
+  ["3"]: {
+    id: "3",
     text: "Hover over a todo to delete it",
     completed: false,
     createdAt: Date.now(),
