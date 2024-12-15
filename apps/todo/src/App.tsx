@@ -2,7 +2,7 @@ import { TodoTypes, UiReactWithSchemas } from "~/tiny-store/store";
 import { CommandMenuTodo } from "~/components/command-todo";
 import { SonnerToast } from "~/components/toast";
 import { useCreateTodoStore } from "~/tiny-store/useCreateStore";
-import { cn } from "~/lib/utils";
+import { cn } from "./lib/utils";
 import { useEffect } from "react";
 import { Todos } from "~/components/todos";
 
