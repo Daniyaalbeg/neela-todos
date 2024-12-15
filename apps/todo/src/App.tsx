@@ -1,19 +1,10 @@
-import type { MetaFunction } from "@remix-run/cloudflare";
-import { TodoTypes, UiReactWithSchemas } from "../tiny-store/store";
+import { TodoTypes, UiReactWithSchemas } from "~/tiny-store/store";
 import { CommandMenuTodo } from "~/components/command-todo";
 import { SonnerToast } from "~/components/toast";
-import { TodoRow } from "~/components/todo-row";
 import { useCreateTodoStore } from "~/tiny-store/useCreateStore";
 import { cn } from "~/lib/utils";
-import { Loader2 } from "lucide-react";
 import { useEffect } from "react";
-
-export const meta: MetaFunction = () => {
-  return [
-    { title: "Neela Todos" },
-    { name: "description", content: "Local first offline todo app" },
-  ];
-};
+import { Todos } from "~/components/todos";
 
 export default function Index() {
   const { store, indexes, isLoadingStore } = useCreateTodoStore();
@@ -88,42 +79,5 @@ const Type = ({ type }: { type: string }) => {
     <li className={cn("", currentType === type && "bg-stone-300")}>
       <button onClick={handleClick}>{type}</button>
     </li>
-  );
-};
-
-const Todos = ({ isLoadingStore }: { isLoadingStore: boolean }) => {
-  const currentType =
-    UiReactWithSchemas.useValue("selectedType")?.toString() ?? "";
-  const todos = UiReactWithSchemas.useSliceRowIds("types", currentType);
-
-  if (isLoadingStore)
-    return (
-      <div className="h-full w-full flex items-center justify-center">
-        <Loader2 className="animate-spin" />
-      </div>
-    );
-
-  if (!todos.length)
-    return (
-      <div className="h-full w-full flex items-center justify-center">
-        <div className="flex flex-grow flex-col items-center justify-center gap-2">
-          <p className="text-sm text-zinc-300">Start typing to add a task</p>
-          <p className="text-xs text-zinc-500/80">
-            Seriously just start typing...
-          </p>
-        </div>
-      </div>
-    );
-
-  return (
-    <div className="h-full w-full flex items-start justify-center">
-      <div className="flex w-full flex-col items-center justify-start px-2 pt-2">
-        <UiReactWithSchemas.SliceView
-          indexId="types"
-          sliceId={currentType}
-          rowComponent={TodoRow}
-        />
-      </div>
-    </div>
   );
 };

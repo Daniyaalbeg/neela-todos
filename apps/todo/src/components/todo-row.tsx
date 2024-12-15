@@ -8,7 +8,10 @@ import { cn } from "~/lib/utils";
 import { useIsMobile } from "~/hooks/useIsMobile";
 import { Todo, UiReactWithSchemas as UIReact } from "../tiny-store/store";
 
-type Props = typeof UIReact.RowProps
+type Props = typeof UIReact.RowProps & {
+  selectedTodo: string | null
+  setSelectedTodo: React.Dispatch<React.SetStateAction<string | null>>
+}
 
 type Actions =
   | "start-editing"
@@ -76,7 +79,7 @@ const initalState: State = {
 };
 
 export const TodoRow = forwardRef<HTMLDivElement, Props>(({
-  tableId, rowId,
+  tableId, rowId, selectedTodo
 }, ref) => {
   const todo = UIReact.useRow(tableId, rowId) as Todo
 
@@ -204,7 +207,7 @@ export const TodoRow = forwardRef<HTMLDivElement, Props>(({
               },
             }}
           >
-            <div className="absolute inset-0 z-[-1] rounded-lg focus:bg-zinc-600/50 group-hover:bg-zinc-600/50" />
+            <div className={cn("absolute inset-0 z-[-1] rounded-lg focus:bg-zinc-600/50 group-hover:bg-zinc-600/50", selectedTodo === todo.id && "bg-zinc-600/50")} />
             <div
               key={todo.id}
               className="flex h-full w-full items-center justify-between px-2 sm:px-4"

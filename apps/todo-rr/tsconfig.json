@@ -1,8 +1,8 @@
 {
   "include": [
-    "env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    "../todo/env.d.ts",
+    "../todo/**/*.ts",
+    "../todo/**/*.tsx",
   ],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
@@ -19,9 +19,9 @@
     "allowJs": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "baseUrl": ".",
+    "baseUrl": "../todo",
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": ["../todo/src/*"]
     },
 
     "noEmit": true
