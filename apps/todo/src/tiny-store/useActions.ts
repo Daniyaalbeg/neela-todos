@@ -1,25 +1,21 @@
-
-import { TodoType, TodoTypes } from "./store"
-import { getStore } from "./useStore"
+import { TodoType } from "./store";
+import { useGetStore } from "./useStore";
 
 export const useActions = () => {
-	const store = getStore()
+  const store = useGetStore();
 
-	const createTodo = ({ text, type }: {
-		text: string
-		type: TodoType
-	}) => {
-		const id = crypto.randomUUID()
-		store.setRow('todos', id, {
-			id,
+  const createTodo = ({ text, type }: { text: string; type: TodoType }) => {
+    const id = crypto.randomUUID();
+    store.setRow("todos", id, {
+      id,
       text,
       completed: false,
       createdAt: Date.now(),
-			type
-		})
-	}
+      type,
+    });
+  };
 
-	// Toggle todo completion
+  // Toggle todo completion
   const toggleTodo = (id: string) => {
     const todo = store.getRow("todos", id);
     if (todo) {
@@ -32,9 +28,9 @@ export const useActions = () => {
     store.delRow("todos", id);
   };
 
-	return {
-		createTodo,
-		toggleTodo,
-		deleteTodo
-	}
-}
+  return {
+    createTodo,
+    toggleTodo,
+    deleteTodo,
+  };
+};
