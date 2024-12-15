@@ -13,7 +13,7 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import { useReward } from "react-rewards";
 import { CheckIcon, TrashIcon } from "lucide-react";
-import { cn } from "~/lib/utils";
+import { cn } from "~/libs/utils";
 import { useIsMobile } from "~/hooks/useIsMobile";
 import { Todo, UiReactWithSchemas as UIReact } from "../tiny-store/store";
 
